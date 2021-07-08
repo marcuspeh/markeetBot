@@ -108,10 +108,7 @@ class telegramBot:
         dispatcher.add_handler(MessageHandler(Filters.text, self.unknown))
 
         # Start the Bot
-        updater.start_webhook(listen="0.0.0.0",
-                port=int(self.port),
-                url_path=self.token)
-        updater.bot.setWebhook('https://markeet-bot.herokuapp.com/' + self.token)
+        updater.start_polling()
 
         # Run the bot until you press Ctrl-C or the process receives SIGINT,
         # SIGTERM or SIGABRT. This should be used most of the time, since
