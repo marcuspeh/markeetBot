@@ -7,8 +7,8 @@ import os
 import requests
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from random import random
-from teleToken import token
 
+token = os.environ["token"]
 PORT = int(os.environ.get('PORT', 5000))
 
 class telegramBot:
