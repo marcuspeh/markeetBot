@@ -7,8 +7,9 @@ import os
 import requests
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from random import random
-from teleToken import token
+from telegramBot import token
 
+PORT = int(os.environ.get('PORT', 5000))
 
 class telegramBot:
     def __init__(self, token, port):
@@ -24,6 +25,7 @@ class telegramBot:
 
     def start(self, update, context):
         """Send a message when the command /start is issued."""
+        print(update)
         self.command[update.message.from_user.id] = "/start"
         self.cache[update.message.from_user.id] = None
         update.message.reply_text('Hi there!')
@@ -91,7 +93,7 @@ class telegramBot:
     def run(self):
         """Start the bot."""
         # Create the Updater and pass it your bot's token.
-        updater = Updater(self.token)
+        updater = Updater(self.token, use_context=True)
 
         # Get the dispatcher to register handlers
         dispatcher = updater.dispatcher
