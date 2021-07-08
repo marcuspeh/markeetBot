@@ -9,7 +9,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from random import random
 
 token = os.environ["token"]
-PORT = int(os.environ.get('PORT', 80))
+PORT = 80
 
 class telegramBot:
     def __init__(self, token, port):
