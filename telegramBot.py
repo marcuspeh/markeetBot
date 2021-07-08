@@ -25,6 +25,7 @@ class telegramBot:
 
     def start(self, update, context):
         """Send a message when the command /start is issued."""
+        print(update)
         self.command[update.message.from_user.id] = "/start"
         self.cache[update.message.from_user.id] = None
         update.message.reply_text('Hi there!')
