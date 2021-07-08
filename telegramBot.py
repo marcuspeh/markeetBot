@@ -9,7 +9,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from random import random
 
 token = os.environ["token"]
-PORT = 80
+PORT = int(os.environ.get('PORT', 5000))
 
 class telegramBot:
     def __init__(self, token, port):
@@ -93,7 +93,7 @@ class telegramBot:
     def run(self):
         """Start the bot."""
         # Create the Updater and pass it your bot's token.
-        updater = Updater(self.token)
+        updater = Updater(self.token, use_context=True)
 
         # Get the dispatcher to register handlers
         dispatcher = updater.dispatcher
