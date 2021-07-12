@@ -32,7 +32,7 @@ class telegramBot:
 
     def help(self, update, context):
         """Send a message when the command /help is issued."""
-        update.message.reply_text('Help!\n\n/checkstock - Check if an item is in stock at a particular store')
+        update.message.reply_text("start - Starts the bot\nhelp - Get the list of commands available\ncheckstock - Check if an item is in stock at a store\nlist - List out all products of a store")
         self.command[update.message.from_user.id] = "/help"
         self.cache[update.message.from_user.id] = None
 
