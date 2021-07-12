@@ -7,8 +7,8 @@ import os
 import requests
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 from random import random
-from telegramBot import token
 
+token = os.environ["token"]
 PORT = int(os.environ.get('PORT', 5000))
 
 class telegramBot:
@@ -108,7 +108,10 @@ class telegramBot:
         dispatcher.add_handler(MessageHandler(Filters.text, self.unknown))
 
         # Start the Bot
-        updater.start_polling()
+        updater.start_webhook(listen="0.0.0.0",
+                port=int(self.port),
+                url_path=self.token)
+        updater.bot.setWebhook('https://markeet-bot.herokuapp.com/' + self.token)
 
         # Run the bot until you press Ctrl-C or the process receives SIGINT,
         # SIGTERM or SIGABRT. This should be used most of the time, since
